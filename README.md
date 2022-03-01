@@ -1,5 +1,5 @@
 # EnglishWordSingularizeAndPluralize 
-英文单词单数复数形式转换
+最全的英文单词单数复数形式转换
 
 ### 一、使用指南
 
@@ -7,12 +7,25 @@
 ```java
 String plural = EnglishWordUtil.pluralize("map");
 ```
-2、复数 -> 单数
+
+2、是否为单数
+```java
+boolean isSingular = EnglishWordUtil.isSingular("map");
+```
+
+3、复数 -> 单数
 ```java
 String singular = EnglishWordUtil.singularize("maps");
 ```
 
+4、是否为复数
+```java
+boolean isPlural = EnglishWordUtil.isPlural("maps");
+```
+
+
 ### 二、支持的类型
+
 0、单复数同形
 
 deer,shoes,sheep,Chinese,news...
@@ -38,9 +51,11 @@ zoo,kangaroo...
 hero,potato,tomato...
 
 6、以辅音字母加y结尾的名词，变y为i加"-es"
+
 city,factory,family...
 
 7、以元音字母加y结尾的名词直接加"-s"
+
 boy,toy,monkey...
 
 8、除了roof，gulf，proof，beef，staff，belief，cliff，以fe或f结尾的名词，把fe或f变为v加"-es"
@@ -60,6 +75,11 @@ map,orange...
 ### 四、测试类
 
 运行EnglishWordUtilTest的main方法：
-![img.png](img.png)
 
-![img_1.png](img_1.png)
+![image](https://user-images.githubusercontent.com/65704625/156096844-6e305b80-57b4-4a81-b49f-b65ae13e5c3b.png)
+
+![image](https://user-images.githubusercontent.com/65704625/156096875-e7790326-d9eb-42a5-a683-b4f5c78e2f57.png)
+
+![image](https://user-images.githubusercontent.com/65704625/156096908-982b39b8-48ce-4a23-a074-c2a7b2d73693.png)
+
+![image](https://user-images.githubusercontent.com/65704625/156096929-28845ed9-4df4-43bf-abc8-81372600b25a.png)
