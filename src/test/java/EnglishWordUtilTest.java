@@ -107,6 +107,7 @@ public class EnglishWordUtilTest {
         HashMap<String, String> map10 = new HashMap<>();
         map10.put("map", "maps");
         map10.put("orange", "oranges");
+        map10.put("user", "users");
         map10.put("German", "Germans");
         map10.put("Russian", "Russians");
         map10.put("American", "Americans");
@@ -116,6 +117,17 @@ public class EnglishWordUtilTest {
         map10.put("Australian", "Australians");
         map10.put("Swede", "Swedes");
 
+        testIsSingular(map0, 0);
+        testIsSingular(map1, 1);
+        testIsSingular(map2, 2);
+        testIsSingular(map3, 3);
+        testIsSingular(map4, 4);
+        testIsSingular(map5, 5);
+        testIsSingular(map6, 6);
+        testIsSingular(map7, 7);
+        testIsSingular(map8, 8);
+        testIsSingular(map9, 9);
+        testIsSingular(map10, 10);
         testPluralize(map0, 0);
         testPluralize(map1, 1);
         testPluralize(map2, 2);
@@ -128,6 +140,17 @@ public class EnglishWordUtilTest {
         testPluralize(map9, 9);
         testPluralize(map10, 10);
 
+        testIsPlural(map0, 0);
+        testIsPlural(map1, 1);
+        testIsPlural(map2, 2);
+        testIsPlural(map3, 3);
+        testIsPlural(map4, 4);
+        testIsPlural(map5, 5);
+        testIsPlural(map6, 6);
+        testIsPlural(map7, 7);
+        testIsPlural(map8, 8);
+        testIsPlural(map9, 9);
+        testIsPlural(map10, 10);
         testSingularize(map0, 0);
         testSingularize(map1, 1);
         testSingularize(map2, 2);
@@ -141,6 +164,21 @@ public class EnglishWordUtilTest {
         testSingularize(map10, 10);
     }
 
+    // 测试EnglishWordUtil.isSingular()
+    private static void testIsSingular(HashMap<String, String> map, int order) {
+        System.out.println("\n----------------是否为单数 测试第" + order + "种类型------------------");
+        for (String singular : map.keySet()) {
+            boolean isSingular = EnglishWordUtil.isSingular(singular);
+            String correctPlural = map.get(singular);
+            if (isSingular) {
+                System.out.println("第" + order + "种类型 " + singular + "为单数形式，判断正确");
+            } else {
+                System.err.println("第" + order + "种类型 " + singular + "为单数形式，判断错误");
+            }
+        }
+    }
+
+    // 测试EnglishWordUtil.pluralize()
     private static void testPluralize(HashMap<String, String> map, int order) {
         System.out.println("\n----------------单数变复数 测试第" + order + "种类型------------------");
         for (String singular : map.keySet()) {
@@ -154,6 +192,21 @@ public class EnglishWordUtilTest {
         }
     }
 
+    // 测试EnglishWordUtil.isPlural()
+    private static void testIsPlural(HashMap<String, String> map, int order) {
+        System.out.println("\n----------------是否为复数 测试第" + order + "种类型------------------");
+        for (String singular : map.keySet()) {
+            String plural = map.get(singular);
+            boolean isPlural = EnglishWordUtil.isPlural(plural);
+            if (isPlural) {
+                System.out.println("第" + order + "种类型 " + plural + "为复数形式，判断正确");
+            } else {
+                System.err.println("第" + order + "种类型 " + plural + "为复数形式，判断错误");
+            }
+        }
+    }
+
+    // 测试EnglishWordUtil.singularize()
     private static void testSingularize(HashMap<String, String> map, int order) {
         System.out.println("\n----------------复数变单数 测试第" + order + "种类型------------------");
         for (String correctSingular : map.keySet()) {
